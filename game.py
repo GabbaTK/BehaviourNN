@@ -13,7 +13,7 @@ else: raise Exception("Unsuported operating system")
 
 MIN_TIME_BETWEEN_PLAYS = 60 * 60 * 2 # 2 Hours
 TOTAL_QUESTIONS = 30
-SERVER_IP = ""
+SERVER_IP = "bnn.konto8.hr"
 PORT = 3725
 CHUNK_SIZE = 512
 FORMAT = "utf-8"
