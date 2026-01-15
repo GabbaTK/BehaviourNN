@@ -1,4 +1,3 @@
-import getch
 import random
 import json
 import os
@@ -7,6 +6,10 @@ import argparse
 import uuid
 import getpass
 import socket
+
+if os.name == "nt": from msvcrt import getch
+elif os.name == "posix": import getch
+else: raise Exception("Unsuported operating system")
 
 MIN_TIME_BETWEEN_PLAYS = 60 * 60 * 2 # 2 Hours
 TOTAL_QUESTIONS = 30

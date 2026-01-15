@@ -1,2 +1,7 @@
 .vscode
 *.dat
+game.build
+game.dist
+game.onefile-build
+*.bin
+*.exe
