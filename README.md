@@ -72,9 +72,11 @@ python game.py <server_ip>
 If the server IP is not provided, it defaults to connecting to the master server
 
 ### Optional commands
+```
 --status           # Check training status
 --resend           # Re-upload saved data
 --inference L R    # Query model probabilities manually
+```
 
 ## Server
 ### Requirements
