@@ -25,8 +25,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install nuitka pefile
-      - run: python -m nuitka --onefile --standalone --windows-dependency-tool=pefile game.py
+      - run: pip install nuitka
+      - name: Download Dependency Walker
+        run: |
+          powershell -Command "Invoke-WebRequest 'https://dependencywalker.com/depends22_x64.zip' -OutFile 'depends.zip'"
+          powershell -Command "Expand-Archive -Path 'depends.zip' -DestinationPath $Env:LOCALAPPDATA\Nuitka\Nuitka\Cache\downloads\depends\x86_64"
+      - run: python -m nuitka --onefile --standalone game.py
       - uses: actions/upload-artifact@v4
         with:
           name: game-windows
