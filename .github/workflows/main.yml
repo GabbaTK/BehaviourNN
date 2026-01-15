@@ -25,8 +25,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install nuitka
-      - run: python -m nuitka --onefile --standalone --enable-dependency-tool-download=yes game.py
+      - run: pip install nuitka pefile
+      - run: python -m nuitka --onefile --standalone --windows-dependency-tool=pefile game.py
       - uses: actions/upload-artifact@v4
         with:
           name: game-windows
