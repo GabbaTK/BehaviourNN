@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install nuitka
-      - run: python -m nuitka --onefile --standalone --include-package=getch game.py
+      - run: python -m nuitka --onefile --standalone game.py
       - uses: actions/upload-artifact@v4
         with:
           name: game-windows
