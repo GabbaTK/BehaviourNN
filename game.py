@@ -7,9 +7,24 @@ import uuid
 import getpass
 import socket
 
-if os.name == "nt": import msvcrt as getch # So getch.getch() still works as getch -> msvcrt
-elif os.name == "posix": import getch
+if os.name == "nt": from msvcrt import getch as getchWIN
+elif os.name == "posix": from getch import getch as getchLIN
 else: raise Exception("Unsuported operating system")
+
+class Getch():
+    def __init__(self):
+        if os.name == "nt": self.run = self.nt
+        elif os.name == "posix": self.run = self.posix
+        else: raise Exception("Unsuported OS")
+
+    def posix(self):
+        return getchLIN()
+
+    def nt(self):
+        return getchWIN().decode("ASCII") # type: ignore
+    
+    def __call__(self, *args, **kwds):
+        return self.run()
 
 MIN_TIME_BETWEEN_PLAYS = 60 * 60 * 2 # 2 Hours
 TOTAL_QUESTIONS = 30
@@ -66,6 +81,7 @@ intro = [
     "Controls:\n\n[A] Choose left option\n[D] Choose right option"
 ]
 usedCombos = []
+getch = Getch()
 
 def readSave():
     if not os.path.exists("save.dat"):
@@ -87,7 +103,7 @@ def showIntro():
             print(char, end="", flush=True)
             time.sleep(0.02)
         print("\n\n\n(press any key to continue)")
-        getch.getch()
+        getch()
         print("\033[2J", end="", flush=True)  # Clear screen
 
 def uploadData(save, server):
@@ -212,7 +228,7 @@ def main():
         
         remaining -= 1
         while True:
-            choice = getch.getch().lower()
+            choice = getch().lower()
 
             if choice == "a":
                 save.get("choices", []).append({"L": left, "R": right, "C": left}) # Left Right Chosen
