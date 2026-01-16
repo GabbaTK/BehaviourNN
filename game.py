@@ -7,7 +7,7 @@ import uuid
 import getpass
 import socket
 
-if os.name == "nt": from msvcrt import getch
+if os.name == "nt": import msvcrt as getch # So getch.getch() still works as getch -> msvcrt
 elif os.name == "posix": import getch
 else: raise Exception("Unsuported operating system")
 
