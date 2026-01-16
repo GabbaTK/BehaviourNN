@@ -35,3 +35,22 @@ jobs:
         with:
           name: game-windows
           path: game.exe
+
+  release:
+    needs: [build-linux, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: |
+            artifacts/game-linux/game.bin
+            artifacts/game-windows/game.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
