@@ -53,4 +53,4 @@ jobs:
             artifacts/game-linux/game.bin
             artifacts/game-windows/game.exe
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
