@@ -90,6 +90,7 @@ python server.py
 
 # Data & Privacy
 Choices are stored locally in save.dat
+
 Each player is identified by a generated GUID which contains their username + a random UUID
 
 The server stores:
@@ -98,10 +99,13 @@ The server stores:
 
 # Notes
 The model will plateau, this is expected
+
 Loss will not approach zero, this is expected
+
 Uncertainty is a feature, not a bug
 
 # License
 
 This project is experimental and provided as-is.
+
 Use, modify, and study it freely.
