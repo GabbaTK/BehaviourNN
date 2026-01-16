@@ -46,7 +46,8 @@ Responds to:
 
 Each player gets their own model.
 
-Gameplay Rules (Hard-coded by design)
+### Gameplay Rules
+
 These rules are intentional and not configurable by the player:
 
 - You can only play once every 2 hours
@@ -55,9 +56,13 @@ These rules are intentional and not configurable by the player:
 - The model is trained with label smoothing and dropout
 
 The model outputs probabilities, not decisions
+
 The model learns how likely you are to choose the left option in a given pairing
+
 If your behavior is inconsistent, the model will reflect that.
+
 If you change over time, the model will lag.
+
 If you try to “outsmart” it, the uncertainty increases.
 
 # Running the Project
